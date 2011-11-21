@@ -1,0 +1,167 @@
+\documentclass{llncs}
+
+%%%%%%%%%% preamble %%%%%%%%%%
+
+% margins
+\usepackage[left=1.8cm, right=1.8cm, top=2.54cm, bottom=2.54cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+
+% autoref command
+\usepackage[pdftex,urlcolor=black,colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\def\figureautorefname{Fig.}
+\def\subfigureautorefname{Fig.}
+
+% listings and Verbatim environment
+\usepackage{fancyvrb}
+\usepackage{relsize}
+\RecustomVerbatimCommand{\Verb}{Verb}{fontsize=\smaller}
+\RecustomVerbatimEnvironment{Verbatim}{Verbatim}{fontsize=\fontsize{7.5pt}{9pt}}
+\usepackage{listings}
+\lstloadlanguages{SPARQL} 
+\lstdefinelanguage{RDF}{morekeywords=@prefix}
+\lstset{frame=bottomline,captionpos=b,numberbychapter=false,
+        aboveskip=0em,belowskip=.5em,abovecaptionskip=.3em,belowcaptionskip=.5em,
+        basicstyle=\ttfamily\fontsize{7pt}{8.5pt}\selectfont,stringstyle=\em,showstringspaces=false}
+
+% for multiline comments
+\usepackage{verbatim} 
+
+% abstract keywords
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+% todo macro
+\usepackage{color}
+\newcommand{\todo}[1]{\noindent\textcolor{red}{{\bf \{TODO} #1{\bf \}}}}
+
+% references
+\usepackage{cite}
+
+% inclusion of graphics and PDF documents
+\usepackage[pdftex]{graphicx}
+\usepackage[final]{pdfpages}
+\usepackage[bf,small]{subfigure}
+\setlength{\floatsep}{1em}
+\setlength{\dblfloatsep}{1em}
+\setlength{\textfloatsep}{1em}
+\setlength{\dbltextfloatsep}{1em}
+\setlength{\belowcaptionskip}{-1em}
+
+% better typography
+\usepackage[tracking, spacing, kerning]{microtype}
+
+% drawings
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing,shapes}
+
+\newcommand{\bulletnumber}[1]{%
+   \tikz[baseline=-2.5]%
+   \node[circle,text=white,fill=gray,anchor=west,inner sep=1pt] {\rm #1};%
+}
+
+% algorithm typesetting
+\usepackage[small,bf]{caption}
+\usepackage{algorithmic}
+\usepackage{float}
+\newfloat{algorithm}{tpbh}{}
+\floatname{algorithm}{Algorithm}
+\def\algorithmautorefname{Algorithm}
+\newcommand{\algorithmtop}{\rule{\columnwidth}{.4pt}\vspace{-1.3em}}
+\newcommand{\algorithmbottom}{\vspace{-0.6em}\rule{\columnwidth}{.4pt}\vspace{-0.6em}}
+
+% equations typesetting
+\usepackage{amsmath}
+% add parenthesis around equation references
+\makeatletter
+\def\tagform@#1{\maketag@@@{\ignorespaces#1\unskip\@@italiccorr}}
+\let\orgtheequation\theequation
+\def\theequation{(\orgtheequation)}
+\makeatother
+
+% lay-out
+\usepackage{needspace}
+
+% make sure that OWL-S does not get hyphenated
+\newcommand{\owls}{\mbox{OWL-S}}
+
+%%%%%%%%%% document %%%%%%%%%%
+
+\begin{document}
+% For every picture that defines or uses external nodes, you'll have to
+% apply the 'remember picture' style. To avoid some typing, we'll apply
+% the style to all pictures.
+\tikzstyle{every picture}+=[remember picture]
+
+\mainmatter
+
+
+%%%%%%%%%% title %%%%%%%%%%
+
+\title{Confomaton: A Conference Enhancer for the Aggregation and Reconciliation of Data from Media Clouds}
+
+\author{Houda Khrouf\inst{1}, Ghislain Atemezing\inst{1}, Guiseppe Rizzo\inst{1}, Thomas Steiner\inst{2} and Raphaël Troncy\inst{1}}
+
+\institute{EURECOM, Sophia Antipolis, France, \email{\{houda.khrouf, auguste.atemezing, guiseppe.rizzo, raphael.troncy\}@eurecom.fr}
+ \and Universitat Polit\`{e}cnica de Catalunya, Department LSI, 08034 Barcelona, Spain, \email{tsteiner@lsi.upc.edu}
+}
+
+\maketitle
+
+% use Courier from this point onward (used CM for author e-mails), and smaller in-text URIs
+\renewcommand{\ttdefault}{pcr}
+\renewcommand\UrlFont{\smaller\tt}
+
+
+%%%%%%%%%% abstract %%%%%%%%%%
+
+\begin{abstract}
+  A common practice in the Semantic Web community is to publish information in a structured way.
+  For conferences, such information can include papers that were presented, people who attended, and other things that have to do with the main conferences and workshops.
+  Typically a format such as RDF, ready to be consumed by any Web application, is used, as is the case with the Semantic Web Dog Food Corpus.
+  However, conferences are venues where participants spread digital information such as tweets, pictures, slides, and share geo-tagged information on the Web.
+  An important challenge is to link user generated content from public services such as Twitter, TwitPic, Flickr, Slideshare to structured data provided by the Semantic Web Dog Food Corpus.
+  The general idea is to use the approach to identify, aggregate and reconciliate data for attaching media (photos, videos, slides) and microposts to part of structured data.
+  To address the above challenge, we developed an application, deployed on the top of Semantic Web technologies and conducted a real test case during the ISWC'11 conference.
+  To assess the validity of our approach, we provide real case statistics gathered from the users.
+\end{abstract}
+
+%%%%%%%%%% body %%%%%%%%%%
+
+\section{Introduction} \label{sec:introduction}
+Just for testing \cite{confomaton}.
+- introduction
+* general introduction on the Web of Data
+* linked data
+* how media service publish information on the Web
+* though aggregation an reconciliation of data spread in the Web
+
+- background
+* list different technologies and explain them in different subsections
+
+- confomaton
+* use case: ISWC'11
+* screenshots
+* some statistics about participants, tweets, pictures, ..., just to highlight the importance to aggregate those data. If not linked, data could disappear or at least have less value
+
+\section{Related Work} \label{sec:relatedwork}
+* for each methodolody, describe what it the relative state of the art
+
+\section{Discussion and Conclusion} \label{sec:discussionconclusion}
+* detail the lesson learned during the ISWC'11
+* what are future plans
+
+
+\section*{Acknowledgements} \label{sec:acknowledgements}
+
+% back to normal size Computer Modern for URLs in bibliography
+\renewcommand{\ttdefault}{cmvtt}
+\renewcommand\UrlFont\tt
+
+\bibliographystyle{abbrv}
+\bibliography{eswc2012}
+
+\end{document}  
